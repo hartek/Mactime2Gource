@@ -35,7 +35,7 @@ def parse(matches, offset, date_last):
     if offset == 1:
         date_match = matches.group(1)
         date = datetime.datetime.strptime(date_match, "%a %b %d %Y %H:%M:%S")
-        date_seconds = date.strftime("%S")
+        date_seconds = (date - datetime.datetime(1970,1,1)).total_seconds()
     else: 
         date_seconds = date_last
 
@@ -67,7 +67,7 @@ def parse(matches, offset, date_last):
         path = path[:-13]
 
     # Print results
-    print(date_seconds + "|USER|" + macb + "|" + path)
+    print(str(int(date_seconds)) + "|USER|" + macb + "|" + path)
    
     # Return last date detected
     return date_seconds
