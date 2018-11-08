@@ -4,8 +4,8 @@ import sys, datetime, re
 
 def main():
     # Regex to match the lines
-    regex_date = "^(\D+\s\D+\s\d+\s\d+\s\d\d:\d\d:\d\d)\s+\d+\s+(....)\s+.+\s+\d+\s+\d+\s+\d+-\d+-\d+\s+(.*)$"
-    regex_nodate = "^\s+\d+\s+(....)\s+.+\s+\d+\s+\d+\s+\d+-\d+-\d+\s+(.*)$"
+    regex_date = "^(\D+\s\D+\s\d+\s\d+\s\d\d:\d\d:\d\d)\s+\d*\s+(....)\s+.+\s\d*\s+\d*\s+\d*.\d*.\d*.\s+(.*)$"
+    regex_nodate = "^\s+\d*\s+(....)\s+.+\s\d*\s+\d*\s+\d*.\d*.\d*.\s+(.*)$"
     
     # Open input file
     filename = sys.argv[1]
@@ -48,7 +48,7 @@ def parse(matches, offset, date_last):
     elif re.match("...b",macb_match):
         macb = 'A'
     elif re.match(".a..",macb_match):
-        macb = 'A'
+        macb = 'M'
     elif re.match("....",macb_match):
         macb = 'D'
 
